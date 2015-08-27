@@ -6,3 +6,5 @@ A simple wireless sensor based on the NodeMCU firmware.
 The GPIO0 is used to the DHT22 sensor with a 4.7KOhm pullup resistor.
 
 Compile the "main.lua" and the "dht22.lua" files because of the memory limit of the ESP8266 module.
+
+You can find my ThingSpeak channel here: https://thingspeak.com/channels/52676
