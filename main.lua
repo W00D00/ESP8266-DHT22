@@ -4,6 +4,7 @@ local GPIO0 = 3
 local temperatureDHT22 = 0
 local humidityDHT22 = 0
 
+local THINGSPEAKCHANNELAPIKEY = "YOURTHINGSPEAKCHANNELAPIKEY"
 function ReadDHT22(pin)
 	local dht22 = require("dht22")
 	dht22.read(pin)
@@ -22,7 +23,7 @@ local function sendDataToThingSpeak()
 	conn = net.createConnection(net.TCP, 0)
 	conn:on("receive", function(conn, data) debugPrint(data) end)
 	conn:connect(80, '184.106.153.149')
-	conn:send("GET /update?key=YOURTHINGSPEAKCHANNELAPIKEY&field1="  .. temperatureDHT22 .. "&field2=" .. humidityDHT22 .. " HTTP/1.1\r\n") 
+	conn:send("GET /update?key=" .. THINGSPEAKCHANNELAPIKEY .. "&field1="  .. temperatureDHT22 .. "&field2=" .. humidityDHT22 .. " HTTP/1.1\r\n") 
 	conn:send("Host: api.thingspeak.com\r\n") 
 	conn:send("Accept: */*\r\n") 
 	conn:send("User-Agent: Mozilla/4.0 (compatible; esp8266 Lua; Windows NT 5.1)\r\n")
